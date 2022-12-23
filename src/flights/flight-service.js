@@ -24,6 +24,7 @@ const flights_db = new pg.Client({
   database: 'postgres',
   password: 'forest123ry',
   port: 5432,
+  ssl: false,
 });
 
 flights_db.connect(function (err){
