@@ -12,7 +12,7 @@ const axios = require('axios');
 
 //const db            = require('./db/queries')
 app.set('port', (process.env.PORT || 8080));
-app.set('baseurl', 'http://localhost:');
+app.set('baseurl', 'http://127.0.0.1:');
 app.set('ticket_port', '8070')
 app.set('flight_port', '8060')
 app.set('bonus_port', '8050')
