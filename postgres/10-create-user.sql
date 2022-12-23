@@ -1,3 +1,12 @@
 -- file: 10-create-user.sql
 CREATE ROLE program WITH PASSWORD 'test';
 ALTER ROLE program WITH LOGIN;
+
+CREATE DATABASE tickets;
+GRANT ALL PRIVILEGES ON DATABASE tickets TO program;
+
+CREATE DATABASE flights;
+GRANT ALL PRIVILEGES ON DATABASE flights TO program;
+
+CREATE DATABASE privilegies;
+GRANT ALL PRIVILEGES ON DATABASE privilegies TO program;

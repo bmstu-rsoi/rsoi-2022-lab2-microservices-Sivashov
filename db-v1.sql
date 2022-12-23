@@ -18,8 +18,8 @@ CREATE TABLE ticket
     status        VARCHAR(20) NOT NULL
         CHECK (status IN ('PAID', 'CANCELED'))
 );
-GRANT ALL PRIVILEGES ON ticket TO program;
-grant USAGE, SELECT ON SEQUENCE ticket_id_seq TO program;
+--GRANT ALL PRIVILEGES ON ticket TO program;
+--grant USAGE, SELECT ON SEQUENCE ticket_id_seq TO program;
 
 insert into ticket(id, ticket_uid, username, flight_number, price, status)
 		values (1, '3422b448-2460-4fd2-9183-8000de6f8343', 'Test Max', 'a380', 1000, 'PAID');
@@ -45,8 +45,8 @@ CREATE TABLE flight
     price           INT                      NOT NULL
 );
 
-GRANT ALL PRIVILEGES ON flight TO program;
-GRANT ALL PRIVILEGES ON airport TO program;
+--GRANT ALL PRIVILEGES ON flight TO program;
+--GRANT ALL PRIVILEGES ON airport TO program;
 insert into airport (id, name, city, country) values (1, 'Шереметьево', 'Москва', 'Россия'),
 													(2, 'Пулково', 'Санкт-Петербург', 'Россия');
 insert into flight (id, flight_number, datetime, from_airport_id, to_airport_id, price)
@@ -75,9 +75,9 @@ CREATE TABLE privilege_history
         CHECK (operation_type IN ('FILL_IN_BALANCE', 'DEBIT_THE_ACCOUNT'))
 );
 
-GRANT ALL PRIVILEGES ON privilege TO program;
-GRANT ALL PRIVILEGES ON privilege_history TO program;
-grant USAGE, SELECT ON SEQUENCE privilege_history_id_seq TO program;
+--GRANT ALL PRIVILEGES ON privilege TO program;
+--GRANT ALL PRIVILEGES ON privilege_history TO program;
+--grant USAGE, SELECT ON SEQUENCE privilege_history_id_seq TO program;
 --truncate privilege cascade;
 --select * from privilege;
 insert into privilege (id, username, status, balance) values (1, 'Test Max', 'GOLD', 1500);

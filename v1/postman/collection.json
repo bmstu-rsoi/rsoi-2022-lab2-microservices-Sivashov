@@ -495,7 +495,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n {\n  \"ticketUid\": \"049161bb-badd-4fa8-9d90-87c9a82b0668\",\n  \"flightNumber\": \"AFL031\",\n  \"fromAirport\": \"Санкт-Петербург Пулково\",\n  \"toAirport\": \"Москва Шереметьево\",\n  \"date\": \"2021-10-08 20:00\",\n  \"price\": 1500,\n  \"status\": \"PAID\"\n },\n {\n  \"ticketUid\": \"049161bb-badd-4fa8-9d90-87c9a82b0668\",\n  \"flightNumber\": \"AFL031\",\n  \"fromAirport\": \"Санкт-Петербург Пулково\",\n  \"toAirport\": \"Москва Шереметьево\",\n  \"date\": \"2021-10-08 20:00\",\n  \"price\": 1500,\n  \"status\": \"PAID\"\n }\n]"
+							"body": "[\n {\n  \"ticketUid\": \"049161bb-badd-4fa8-9d90-87c9a82b0668\",\n  \"flightNumber\": \"AFL031\",\n  \"fromAirport\": \"Санкт-Петербург Пулково\",\n  \"toAirport\": \"Москва Шереметьево\",\n  \"date\": \"2021-10-08 20:00\",\n  \"price\": 1500,\n  \"status\": \"PAID\"\n }\n]"
 						}
 					]
 				},
@@ -810,7 +810,7 @@
 		},
 		{
 			"key": "balance",
-			"value": ""
+			"value": "1500"
 		}
 	]
 }
