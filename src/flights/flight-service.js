@@ -20,9 +20,9 @@ const pg = require('pg');
 const flights_db = new pg.Client({
   user: 'postgres',
   //host: 'postgres',
-  host: 'postgres',
+  //host: 'postgres',
   database: 'postgres',
-  password: 'forest123ry',
+  password: "forest123ry",
   port: 5432,
   ssl: false,
 });
@@ -32,7 +32,16 @@ flights_db.connect(function (err){
       console.log(err);
   else
       console.log("Connected to flights_db!");
+      
+
 });
+
+/*const dbQuery = `SELECT * FROM Airport;`;
+  console.log(dbQuery)
+  flights_db.query(dbQuery, (err, dbRes) => {
+  console.log(err);
+  console.log(dbRes.rows)
+  });*/
 
 app.get('/api/v1/flights', async (req, res) => {
   const dbQuery = `SELECT * FROM Flight;`;

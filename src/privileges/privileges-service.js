@@ -23,9 +23,9 @@ const pg = require('pg');
 const privileges_db = new pg.Client({
   user: 'postgres',
   //host: 'postgres',
-  host: 'postgres',
+  //host: 'postgres',
   database: 'postgres',
-  password: 'forest123ry',
+  password: "forest123ry",
   port: 5432,
   ssl: false,
 });
@@ -149,7 +149,7 @@ app.post('/api/v1/privileges', async (req, res) => {
   console.log((await result).rows[0])
   let value = (await result).rows[0].balance_diff
   let priv_id = (await result).rows[0].privilege_id
-  const dhQuery = `SELECT * FROM Privilege where id = '${priv_id}';`;
+  const dhQuery = `SELECT * FROM Privilege where id = ${priv_id};`;
   const resul = privileges_db.query(dhQuery)
   console.log((await resul).rows[0])
   let val = (await resul).rows[0].balance

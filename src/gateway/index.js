@@ -12,7 +12,7 @@ const axios = require('axios');
 
 //const db            = require('./db/queries')
 app.set('port', (process.env.PORT || 8080));
-app.set('baseurl', 'http://127.0.0.1:');
+app.set('baseurl', 'http://localhost:');
 app.set('ticket_port', '8070')
 app.set('flight_port', '8060')
 app.set('bonus_port', '8050')
@@ -29,9 +29,10 @@ app.get('/api/v1/flights', function (req, res) {
   const size = req.params.size;
   let a, b = 1;
   console.log(page, size)
-  if (page !== undefined && page !== null) {
+  /*if (page !== undefined && page !== null) {
     a = page
-  }
+  }*/
+  a = 1
   if (size !== undefined && size !== null) {
     b = size
   }
@@ -40,13 +41,13 @@ app.get('/api/v1/flights', function (req, res) {
             {headers: {'X-User-Name': app.get('UserName')}}).then((response) => {
     //console.log(response.data)
     let data = response.data[0]
-    res.json({page: a, pageSize: b, totalElements: Object.keys(response.data).length, items: {
+    res.json({page: a, pageSize: b, totalElements: Object.keys(response.data).length, items: [{
       flightNumber: data.flight_number,
       fromAirport: "Санкт-Петербург Пулково",
       toAirport: "Москва Шереметьево",
       date: data.datetime,
       price: data.price
-    }}).status(200)
+    }]}).status(200)
   }).catch((err) => {
     console.log(err)
     res.status(400).json(null);

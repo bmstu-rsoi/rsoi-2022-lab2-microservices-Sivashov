@@ -21,8 +21,9 @@ CREATE TABLE ticket
 --GRANT ALL PRIVILEGES ON ticket TO program;
 --grant USAGE, SELECT ON SEQUENCE ticket_id_seq TO program;
 
+
 insert into ticket(id, ticket_uid, username, flight_number, price, status)
-		values (1, '3422b448-2460-4fd2-9183-8000de6f8343', 'Test Max', 'a380', 1000, 'PAID');
+		values (1, '049161bb-badd-4fa8-9d90-87c9a82b0668', 'Test Max', 'AFL031', 1500, 'PAID');
 		
 select * from ticket;
 
