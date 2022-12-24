@@ -10,9 +10,7 @@ var url             = require('url')
 
 //const db            = require('./db/queries')
 app.set('port', (process.env.PORT || 8050));
-app.set('baseurl', 'http://localhost:');
-app.set('baseport', '8080')
-app.set('UserName', 'Dima')
+app.set('UserName', 'Test Max')
 
 app.use(logger('combined')); // выводим все запросы со статусами в консоль
 app.use(bodyParser.json()); // стандартный модуль, для парсинга JSON в запросах
@@ -23,9 +21,9 @@ const pg = require('pg');
 const privileges_db = new pg.Client({
   user: 'postgres',
   //host: 'postgres',
-  //host: 'postgres',
+  host: 'postgres',
   database: 'postgres',
-  password: "forest123ry",
+  password: "postgres",
   port: 5432,
   ssl: false,
 });

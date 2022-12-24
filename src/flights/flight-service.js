@@ -20,9 +20,9 @@ const pg = require('pg');
 const flights_db = new pg.Client({
   user: 'postgres',
   //host: 'postgres',
-  //host: 'postgres',
+  host: 'postgres',
   database: 'postgres',
-  password: "forest123ry",
+  password: "postgres",
   port: 5432,
   ssl: false,
 });
