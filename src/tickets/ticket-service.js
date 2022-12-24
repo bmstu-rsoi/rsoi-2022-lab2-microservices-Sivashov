@@ -101,7 +101,7 @@ app.post('/api/v1/tickets', async (req, res) => {
     const { ticket_uid, flight_number, price } = req.body
     console.log(ticket_uid, flight_number, price)
     let hQuery =
-    `insert into Ticket(id, ticket_uid, username, flight_number, price, status) values (default, '${ticket_uid}', '${name}', '${flight_number}', ${price}, 'PAID') returning *;`;
+    `insert into Ticket(id, ticket_uid, username, flight_number, price, status) values (2, '${ticket_uid}', '${name}', '${flight_number}', ${price}, 'PAID') returning *;`;
     console.log(hQuery)
     const res_insert = tickets_db.query(hQuery)
     console.log((await res_insert))
