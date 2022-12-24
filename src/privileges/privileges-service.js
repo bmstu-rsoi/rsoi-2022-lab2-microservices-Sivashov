@@ -171,7 +171,6 @@ app.post('/api/v1/privileges', async (req, res) => {
   else {
     hQuery =
     `insert into Privilege_history(privilege_id, ticket_uid, datetime, balance_diff, operation_type) values (${data.privilege_id}, "${data.ticket_uid}", now(), ${data.balance_diff * -1}, 'FILL_IN_BALANCE') returning ticket_uid;`;
-
   }
   const res_insert = privileges_db.query(hQuery)
   console.log((await res_insert))
