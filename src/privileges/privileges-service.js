@@ -23,7 +23,7 @@ const privileges_db = new pg.Client({
   //host: 'postgres',
   host: 'postgres',
   database: 'postgres',
-  password: "postgres",
+  password: 'postgres',
   port: 5432,
   ssl: false,
 });

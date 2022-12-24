@@ -6,7 +6,7 @@
 
 --CREATE ROLE program if not exists WITH PASSWORD 'test';
 --ALTER ROLE program WITH LOGIN;
-
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE ticket
 (
@@ -25,7 +25,7 @@ CREATE TABLE ticket
 insert into ticket(id, ticket_uid, username, flight_number, price, status)
 		values (1, '049161bb-badd-4fa8-9d90-87c9a82b0668', 'Test Max', 'AFL031', 1500, 'PAID');
 		
-select * from ticket;
+SELECT * FROM Ticket where username = 'Test Max';
 
 
 CREATE TABLE airport
@@ -81,10 +81,9 @@ CREATE TABLE privilege_history
 --grant USAGE, SELECT ON SEQUENCE privilege_history_id_seq TO program;
 --truncate privilege cascade;
 --select * from privilege;
-insert into privilege (id, username, status, balance) values (1, 'Test Max', 'GOLD', 1500);
+insert into privilege (id, username, status, balance) values (1, 'Test Max', 'SILVER', 1500);
 --update privilege set balance = 1500 where username = 'Dima';
 --truncate privilege_history;
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 insert into privilege_history (id, privilege_id, ticket_uid, datetime, balance_diff, operation_type)
 values (1, 1, '049161bb-badd-4fa8-9d90-87c9a82b0668', '2021-10-08T19:59:19Z', 1500, 'FILL_IN_BALANCE');
 select * from privilege;

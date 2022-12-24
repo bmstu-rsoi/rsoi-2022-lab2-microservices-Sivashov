@@ -23,7 +23,7 @@ const tickets_db = new pg.Client({
     //host: 'postgres',
     host: 'postgres',
     database: 'postgres',
-    password: "postgres",
+    password: 'postgres',
     port: 5432,
   ssl: false,
 });
@@ -42,11 +42,12 @@ app.get('/', function (req, res) {
 app.get('/api/v1/tickets', async (req, res) => {
     const name = req.headers['x-user-name'];
     //console.log(a);
-    const dbQuery = `SELECT * FROM Ticket where username = '${name}';`;
+    //const dbQuery = `SELECT * FROM Ticket where username = '${name}';`;
+    const dbQuery = `SELECT * FROM Ticket;`;
     console.log(dbQuery)
     tickets_db.query(dbQuery, (err, dbRes) => {
-    //console.log(err);
-    //console.log(dbRes)
+    console.log(err);
+    console.log(dbRes)
     res.status(200).json(dbRes.rows);
     });
 });
@@ -60,16 +61,11 @@ app.get('/api/v1/tickets/:ticketUid', async (req, res) => {
     tickets_db.query(dbQuery, (err, dbRes) => {
     //console.log(err);
     if (typeof dbRes !== 'undefined') {
-        if (dbRes.rows[0]['username'] === name) {
-            console.log(dbRes.rows)
-            res.status(200).json(dbRes.rows);
-        }
-        else {
-            res.status(404).json(null)
-        }
+        console.log(dbRes.rows)
+        res.status(200).json(dbRes.rows);
     }
     else {
-        res.status(404)
+        res.status(404).json(null)
     }
     })
     

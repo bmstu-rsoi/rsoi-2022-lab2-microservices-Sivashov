@@ -15,7 +15,7 @@ app.set('port', (process.env.PORT || 8080));
 app.set('baseurl', '');
 app.set('ticket_port', 'http://tickets:8070')
 app.set('flight_port', 'http://flights:8060')
-app.set('bonus_port', 'http://privileges:8050')
+app.set('bonus_port', 'http://privilegies:8050')
 app.set('UserName', 'Test Max')
 
 app.use(logger('combined')); // выводим все запросы со статусами в консоль
@@ -63,6 +63,7 @@ const getTicket = async (id) => {
   }
 }
 
+
 app.get('/api/v1/tickets/:ticketUid', async function (req, res) {
   //console.log(app.get('baseurl') + app.get('ticket_port') + '/getall')
   const id = req.params.ticketUid;
@@ -95,7 +96,7 @@ const getBonuses = async () => {
 const getTickets = async () => {
   try {
     return await axios.get(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets',
-                    {headers: {'X-User-Name': app.get('UserName'), 'Content-Type': "application/json"}})
+                    {headers: {'X-User-Name': 'Test Max'}})
   } catch (error) {
     console.error(error)
   }
@@ -183,27 +184,30 @@ app.get('/api/v1/privilege', async function (req, res) {
 
 app.get('/api/v1/tickets', async function (req, res) {
 
-  const flights_data = await getTickets()
-  if ((await flights_data).data !== undefined) {
-    console.log((await flights_data).data)
-  }
-  if ((await flights_data).data)
-  {
-    let dat = {
-      ticketUid: flights_data.data[0].ticket_uid,
-      flightNumber: flights_data.data[0].flight_number,
+  console.log(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets')
+  axios.get(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets',
+                    {headers: {'X-User-Name': app.get('UserName')}}).then((response) => {
+    let data = response.data[0]
+  //const flights_data = await getTickets()
+  //if ((await flights_data).data !== undefined) {
+  //  console.log((await flights_data).data)
+  //}
+  //if ((await flights_data).data)
+  //{
+    res.status(200).json([{
+      ticketUid: data.ticket_uid,
+      flightNumber: data.flight_number,
       fromAirport: "Санкт-Петербург Пулково",
       toAirport: "Москва Шереметьево",
       date: "2021-10-08 20:00",
-      price: flights_data.data[0].price,
+      price: data.price,
       status: "PAID"
-     }
-    res.status(200).json([dat])
+     }])
     //res.status(200).json(flights_data.data)
-  }
-  else {
-    res.status(400).json(null)
-  }
+  }).catch((err) => {
+    console.log(err)
+    res.status(400).json(null);
+  })
 });
 
 app.get('/', function (req, res) {
