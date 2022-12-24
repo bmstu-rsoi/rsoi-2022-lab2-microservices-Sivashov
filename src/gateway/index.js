@@ -104,7 +104,8 @@ const getTickets = async () => {
 const getFlights = async () => {
   try {
     return await axios.get(app.get('baseurl') + app.get('flight_port') + '/api/v1/flights')
-  } catch (error) {
+  }
+   catch (error) {
     console.error(error)
   }
 }
