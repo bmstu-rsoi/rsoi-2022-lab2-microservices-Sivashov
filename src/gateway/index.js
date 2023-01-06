@@ -189,15 +189,23 @@ app.get('/api/v1/privilege', async function (req, res) {
   }
   axios.get(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets',
                     {headers: {'X-User-Name': app.get('UserName')}}).then((response) => {
-    let data_n = response.data[1]
+    if (response.data.length > 1) {
+      let data_n = response.data[1]
+      let dat2 = {date: "", ticketUid: data_n.ticket_uid,
+        balanceDiff: "", operationType: ""}
+    }
 
     console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
     let dat = {date: datt.datetime, ticketUid: datt.ticket_uid,
       balanceDiff: datt.balance_diff, operationType: datt.operation_type}
-    let dat2 = {date: "", ticketUid: data_n.ticket_uid,
-        balanceDiff: "", operationType: ""}
+    
     //res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: [dat, dat2]})
+    if (response.data.length > 1) {
     res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat, dat2]})
+    }
+    else {
+      res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat]})
+    }
   }).catch((err) => {
     console.log(err)
     res.status(400).json(null);
