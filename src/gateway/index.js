@@ -188,6 +188,7 @@ app.get('/api/v1/tickets', async function (req, res) {
   axios.get(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets',
                     {headers: {'X-User-Name': app.get('UserName')}}).then((response) => {
     let data = response.data[0]
+    let data_n = response.data[1]
   //const flights_data = await getTickets()
   //if ((await flights_data).data !== undefined) {
   //  console.log((await flights_data).data)
@@ -202,6 +203,15 @@ app.get('/api/v1/tickets', async function (req, res) {
       toAirport: "Москва Шереметьево",
       date: "2021-10-08 20:00",
       price: data.price,
+      status: "PAID"
+     },
+     {
+      ticketUid: data_n.ticket_uid,
+      flightNumber: data_n.flight_number,
+      fromAirport: "Санкт-Петербург Пулково",
+      toAirport: "Москва Шереметьево",
+      date: "2021-10-08 20:00",
+      price: data_n.price,
       status: "PAID"
      }])
     //res.status(200).json(flights_data.data)
