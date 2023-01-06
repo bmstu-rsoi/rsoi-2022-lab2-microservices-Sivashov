@@ -193,9 +193,10 @@ app.get('/api/v1/privilege', async function (req, res) {
       let data_n = response.data[1]
       let dat2 = {date: "", ticketUid: data_n.ticket_uid,
         balanceDiff: "", operationType: ""}
+      console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
     }
 
-    console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
+    
     let dat = {date: datt.datetime, ticketUid: datt.ticket_uid,
       balanceDiff: datt.balance_diff, operationType: datt.operation_type}
     
