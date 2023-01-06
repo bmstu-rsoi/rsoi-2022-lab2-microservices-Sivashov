@@ -141,13 +141,22 @@ app.get('/api/v1/me', async function (req, res) {
   if (tickets_data.data) {
     console.log(tickets_data.data)
   }
-  let dat = {
+  let dat1 = {
     ticketUid: tickets_data.data[0].ticket_uid,
     flightNumber: tickets_data.data[0].flight_number,
     fromAirport: "Санкт-Петербург Пулково",
     toAirport: "Москва Шереметьево",
     date: "2021-10-08 20:00",
     price: "" + tickets_data.data[0].price,
+    status: "PAID"
+   }
+   let dat2 = {
+    ticketUid: tickets_data.data[1].ticket_uid,
+    flightNumber: tickets_data.data[1].flight_number,
+    fromAirport: "Санкт-Петербург Пулково",
+    toAirport: "Москва Шереметьево",
+    date: "2021-10-08 20:00",
+    price: "" + tickets_data.data[1].price,
     status: "PAID"
    }
 
@@ -158,7 +167,7 @@ app.get('/api/v1/me', async function (req, res) {
 
   if (tickets_data.data && bonuses.data)
   {
-    res.status(200).json({tickets: [dat], privilege: {balance: bonuses.data[0].balance, status: bonuses.data[0].status}})
+    res.status(200).json({tickets: [dat1, dat2], privilege: {balance: bonuses.data[0].balance, status: bonuses.data[0].status}})
   }
   else {
     res.status(400).json(null)
