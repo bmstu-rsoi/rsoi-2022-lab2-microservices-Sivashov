@@ -147,7 +147,7 @@ app.get('/api/v1/me', async function (req, res) {
     fromAirport: "Санкт-Петербург Пулково",
     toAirport: "Москва Шереметьево",
     date: "2021-10-08 20:00",
-    price: "" + tickets_data.data[0].price,
+    price: tickets_data.data[0].price,
     status: "PAID"
    }
    let dat2 = {
@@ -156,7 +156,7 @@ app.get('/api/v1/me', async function (req, res) {
     fromAirport: "Санкт-Петербург Пулково",
     toAirport: "Москва Шереметьево",
     date: "2021-10-08 20:00",
-    price: "" + tickets_data.data[1].price,
+    price: tickets_data.data[1].price,
     status: "PAID"
    }
 
