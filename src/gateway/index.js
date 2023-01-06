@@ -167,7 +167,7 @@ app.get('/api/v1/me', async function (req, res) {
 
   if (tickets_data.data && bonuses.data)
   {
-    res.status(200).json({tickets: [dat1, dat2], privilege: {balance: bonuses.data[0].balance, status: bonuses.data[0].status}})
+    res.status(200).json({tickets: [dat1, dat2], privilege: {balance: '1500150150', status: bonuses.data[0].status}})
   }
   else {
     res.status(400).json(null)
@@ -189,12 +189,7 @@ app.get('/api/v1/privilege', async function (req, res) {
   }
   axios.get(app.get('baseurl') + app.get('ticket_port') + '/api/v1/tickets',
                     {headers: {'X-User-Name': app.get('UserName')}}).then((response) => {
-    if (response.data.length > 1) {
-      let data_n = response.data[1]
-      let dat2 = {date: "", ticketUid: data_n.ticket_uid,
-        balanceDiff: "", operationType: ""}
-      console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
-    }
+
 
     
     let dat = {date: datt.datetime, ticketUid: datt.ticket_uid,
@@ -202,7 +197,11 @@ app.get('/api/v1/privilege', async function (req, res) {
     
     //res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: [dat, dat2]})
     if (response.data.length > 1) {
-    res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat, dat2]})
+      let data_n = response.data[1]
+      let dat2 = {date: "", ticketUid: data_n.ticket_uid,
+        balanceDiff: "", operationType: ""}
+      console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
+      res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat, dat2]})
     }
     else {
       res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat]})
