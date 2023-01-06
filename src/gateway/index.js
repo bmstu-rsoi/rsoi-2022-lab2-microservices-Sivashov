@@ -180,7 +180,8 @@ app.get('/api/v1/privilege', async function (req, res) {
   console.log("Bonuses: ", bonus_data.data)
   
   const history_data = await getBonusHistory(bonus_data.data[0].id)
-  console.log("History: ", history_data.data[0], history_data.data[1])
+  console.log("History 1: ", history_data.data[0])
+  console.log("History 2: ", history_data.data[1])
   if (history_data.data) {
     let dat = {date: history_data.data[0].datetime, ticketUid: history_data.data[0].ticket_uid,
                 balanceDiff: history_data.data[0].balance_diff, operationType: history_data.data[0].operation_type}
