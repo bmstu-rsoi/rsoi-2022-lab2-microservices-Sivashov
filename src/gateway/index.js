@@ -194,6 +194,7 @@ app.get('/api/v1/tickets', async function (req, res) {
   //}
   //if ((await flights_data).data)
   //{
+    console.log("Tickets data: ", data.ticket_uid, data.flight_number, data.price)
     res.status(200).json([{
       ticketUid: data.ticket_uid,
       flightNumber: data.flight_number,
