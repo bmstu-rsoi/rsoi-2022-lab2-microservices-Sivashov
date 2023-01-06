@@ -177,12 +177,10 @@ app.get('/api/v1/me', async function (req, res) {
 app.get('/api/v1/privilege', async function (req, res) {
 
   const bonus_data = await getBonuses()
-  if (bonus_data.data) {
-    console.log(bonus_data.data)
-    //res.status(200).json({items: bonus_data.data})
-  }
+  console.log("Bonuses: ", bonus_data.data)
   
   const history_data = await getBonusHistory(bonus_data.data[0].id)
+  console.log("History: ", history_data.data)
   if (history_data.data) {
     res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: history_data.data})
   }
