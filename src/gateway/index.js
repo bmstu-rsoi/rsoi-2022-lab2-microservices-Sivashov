@@ -186,9 +186,9 @@ app.get('/api/v1/privilege', async function (req, res) {
   let datd = (await history_data).data[1]
   let dat = {date: datt.datetime, ticketUid: datt.ticket_uid,
                 balanceDiff: datt.balance_diff, operationType: datt.operation_type}
-  let dat2 = {date: "", ticketUid: datd["ticket_uid"],
-                  balanceDiff: datd["balance_diff"], operationType: datd["operation_type"]}
-  res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: history_data.data})
+  /*let dat2 = {date: "", ticketUid: datd["ticket_uid"],
+                  balanceDiff: datd["balance_diff"], operationType: datd["operation_type"]}*/
+  res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: [dat, dat]})
   });
 
 app.get('/api/v1/tickets', async function (req, res) {
