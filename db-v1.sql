@@ -11,7 +11,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE ticket
 (
     id            SERIAL PRIMARY KEY,
-    ticket_uid    uuid UNIQUE NOT NULL,
+    ticket_uid    uuid NOT NULL,
     username      VARCHAR(80) NOT NULL,
     flight_number VARCHAR(20) NOT NULL,
     price         INT         NOT NULL,
