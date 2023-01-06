@@ -34,7 +34,7 @@ jobs:
           WAIT_PORTS: 8080,8070,8060,8050
       
       - name: Timeout
-        run: sleep 20s
+        run: sleep 10s
         shell: bash
 
       - name: Run API Tests

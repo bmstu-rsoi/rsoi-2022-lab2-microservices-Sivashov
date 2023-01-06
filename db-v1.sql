@@ -81,7 +81,7 @@ CREATE TABLE privilege_history
 --grant USAGE, SELECT ON SEQUENCE privilege_history_id_seq TO program;
 --truncate privilege cascade;
 --select * from privilege;
-insert into privilege (id, username, status, balance) values (default, 'Test M', 'SILVER', 1500)
+insert into privilege (id, username, status, balance) values (default, 'Test Max', 'SILVER', 1500)
 on conflict (id) do update set id = excluded.id + 1;
 --update privilege set balance = 1500 where username = 'Dima';
 --truncate privilege_history;
