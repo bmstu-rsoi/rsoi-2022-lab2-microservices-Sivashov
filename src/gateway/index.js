@@ -265,8 +265,8 @@ app.post('/api/v1/tickets', async function (req, res) {
   const bonus = await getBonuses()
   console.log(bonus.data)
   const bonus_data = updateBonus(name, pprice)
+  console.log("Paid: ", (await bonus_data).data)
   if (paidFromBalance === true) {
-    console.log("Paid: ", (await bonus_data).data)
     res_paid_bonus = (await bonus_data).data.difference
   }
   const new_ticket_data = await addTicket((await bonus_data).data.uuid, flightNumber, price)
