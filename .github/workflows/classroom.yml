@@ -46,6 +46,13 @@ jobs:
           delayRequest: 100
           reporters: '[ "cli" ]'
 
+      - name: Dump docker logs on failure
+        if: failure()
+        uses: jwalton/gh-docker-logs@v2
+        with:
+          images: 'library/postgres,tickets,flights,privilegies,gateway'
+          tail: '250'
+
       - uses: education/autograding@v1
         id: autograder
         continue-on-error: true
