@@ -121,11 +121,11 @@ app.patch('/api/v1/privileges', async (req, res) => {
     let hQuery;
     if (value_diff < 0) {
       hQuery =
-      `insert into Privilege_history(id, privilege_id, ticket_uid, datetime, balance_diff, operation_type) values (default, ${privilege_id}, uuid_generate_v4(), now(), ${value_diff}, 'DEBIT_THE_ACCOUNT') returning ticket_uid;`;
+      `insert into Privilege_history(id, privilege_id, ticket_uid, datetime, balance_diff, operation_type) values (2, ${privilege_id}, uuid_generate_v4(), now(), ${value_diff}, 'DEBIT_THE_ACCOUNT') returning ticket_uid;`;
     }
     else {
       hQuery =
-      `insert into Privilege_history(id, privilege_id, ticket_uid, datetime, balance_diff, operation_type) values (default, ${privilege_id}, uuid_generate_v4(), now(), ${value_diff}, 'FILL_IN_BALANCE') returning ticket_uid;`;
+      `insert into Privilege_history(id, privilege_id, ticket_uid, datetime, balance_diff, operation_type) values (2, ${privilege_id}, uuid_generate_v4(), now(), ${value_diff}, 'FILL_IN_BALANCE') returning ticket_uid;`;
     
     }
     const res_insert = privileges_db.query(hQuery)
