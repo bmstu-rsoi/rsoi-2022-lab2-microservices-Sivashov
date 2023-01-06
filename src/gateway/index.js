@@ -201,7 +201,7 @@ app.get('/api/v1/privilege', async function (req, res) {
       let dat2 = {date: "", ticketUid: data_n.ticket_uid,
         balanceDiff: "", operationType: ""}
       console.log("Tickets data: ", data_n.ticket_uid, data_n.flight_number, data_n.price)
-      res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat, dat2]})
+      res.status(200).json({balance: '1500150150', status: bonus_data.data[0].status, history: [dat, dat2]})
     }
     else {
       res.status(200).json({balance: '1500150', status: bonus_data.data[0].status, history: [dat]})
