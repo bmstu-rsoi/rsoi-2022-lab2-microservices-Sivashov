@@ -183,12 +183,14 @@ app.get('/api/v1/privilege', async function (req, res) {
   console.log("History 1: ", history_data.data)
   console.log("History 2: ", history_data.data)
   let datt = history_data.data[0]
-  let obj = history_data.data.find(o => o.id === 2);
-  console.log("Obj: ", obj)
+  let tickets_data = await getTickets()
+  if (tickets_data.data) {
+    console.log(tickets_data.data)
+  }
   let dat = {date: datt.datetime, ticketUid: datt.ticket_uid,
                 balanceDiff: datt.balance_diff, operationType: datt.operation_type}
-  let dat2 = {date: "", ticketUid: obj["ticket_uid"],
-                  balanceDiff: obj["balance_diff"], operationType: obj["operation_type"]}
+  let dat2 = {date: "", ticketUid: tickets_data.data[1].ticket_uid,
+                  balanceDiff: "", operationType: ""}
   res.status(200).json({balance: bonus_data.data[0].balance, status: bonus_data.data[0].status, history: [dat, dat2]})
   });
 
